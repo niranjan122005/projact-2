@@ -8,8 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch db.json --port 4000",
-    "start": "json-server --watch db.json --port $PORT --host 0.0.0.0"
+    "server": "json-server --watch db.json --port 4000"
   },
   "dependencies": {
     "axios": "^1.7.9",
