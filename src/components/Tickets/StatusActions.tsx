@@ -11,12 +11,12 @@ const labelFor: Record<TicketStatus, string> = {
 }
 
 const styleFor: Record<TicketStatus, string> = {
-  Open: 'border-ink-200 text-ink-700 hover:bg-ink-50',
+  Open: 'border-ink-200 dark:border-ink-700 text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800',
   Assigned: 'border-signal-indigo/30 text-signal-indigo hover:bg-signal-indigo/10',
   'In Progress': 'border-signal-amber/30 text-signal-amber hover:bg-signal-amber/10',
-  Pending: 'border-ink-300 text-ink-700 hover:bg-ink-50',
+  Pending: 'border-ink-300 dark:border-ink-600 text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800',
   Resolved: 'border-signal-teal/30 text-signal-teal hover:bg-signal-teal/10',
-  Closed: 'border-ink-800 text-ink-800 hover:bg-ink-100',
+  Closed: 'border-ink-800 dark:border-ink-200 text-ink-800 dark:text-ink-100 hover:bg-ink-100 dark:hover:bg-ink-700',
   Cancelled: 'border-signal-rust/30 text-signal-rust hover:bg-signal-rust/10',
 }
 

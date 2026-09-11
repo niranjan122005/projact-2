@@ -38,7 +38,7 @@ export function ReportsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-lg font-semibold text-ink-900">Reports</h1>
+        <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50">Reports</h1>
         <p className="text-sm text-ink-400">A quick read on ticket volume and resolution performance.</p>
       </div>
 
@@ -49,24 +49,24 @@ export function ReportsPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="rounded-lg border border-ink-100 bg-white p-5">
-          <h2 className="text-sm font-semibold text-ink-800 mb-3">Tickets by category</h2>
+        <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+          <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Tickets by category</h2>
           <ul className="space-y-2">
             {byCategory.map(([name, count]) => (
               <li key={name} className="flex items-center justify-between text-sm">
-                <span className="text-ink-600">{name}</span>
-                <span className="font-medium text-ink-800">{count}</span>
+                <span className="text-ink-600 dark:text-ink-400">{name}</span>
+                <span className="font-medium text-ink-800 dark:text-ink-100">{count}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div className="rounded-lg border border-ink-100 bg-white p-5">
-          <h2 className="text-sm font-semibold text-ink-800 mb-3">Tickets by agent</h2>
+        <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+          <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Tickets by agent</h2>
           <ul className="space-y-2">
             {byAgent.map(([name, count]) => (
               <li key={name} className="flex items-center justify-between text-sm">
-                <span className="text-ink-600">{name}</span>
-                <span className="font-medium text-ink-800">{count}</span>
+                <span className="text-ink-600 dark:text-ink-400">{name}</span>
+                <span className="font-medium text-ink-800 dark:text-ink-100">{count}</span>
               </li>
             ))}
           </ul>

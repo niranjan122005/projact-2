@@ -50,7 +50,7 @@ export function ResolutionModal({
           />
         </FormField>
         <div className="mt-4 flex justify-end gap-2">
-          <button type="button" onClick={onClose} className="rounded-md border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring">
+          <button type="button" onClick={onClose} className="rounded-md border border-ink-200 dark:border-ink-700 px-4 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring">
             Cancel
           </button>
           <button type="submit" disabled={submitting} className="rounded-md bg-signal-teal text-white px-4 py-2 text-sm font-medium hover:bg-signal-teal/90 disabled:opacity-60 focus-ring">

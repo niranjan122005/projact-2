@@ -57,16 +57,16 @@ export function ProfilePage() {
   return (
     <div className="max-w-xl space-y-6">
       <div>
-        <h1 className="text-lg font-semibold text-ink-900">Profile</h1>
+        <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50">Profile</h1>
         <p className="text-sm text-ink-400">Manage your account details.</p>
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white p-5 flex items-center gap-4">
-        <div className="h-14 w-14 rounded-full bg-ink-800 text-white flex items-center justify-center text-lg font-semibold">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 flex items-center gap-4">
+        <div className="h-14 w-14 rounded-full bg-ink-800 dark:bg-ink-200 dark:text-ink-900 text-white flex items-center justify-center text-lg font-semibold">
           {user.fullName.split(' ').map((p) => p[0]).slice(0, 2).join('')}
         </div>
         <div>
-          <p className="font-semibold text-ink-900">{user.fullName}</p>
+          <p className="font-semibold text-ink-900 dark:text-ink-50">{user.fullName}</p>
           <p className="text-sm text-ink-400">{user.email}</p>
           <div className="flex gap-2 mt-1.5">
             <RoleBadge role={user.role} />
@@ -76,7 +76,7 @@ export function ProfilePage() {
         <p className="ml-auto text-xs text-ink-400 self-start">Member since {formatDate(user.createdDate)}</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="rounded-lg border border-ink-100 bg-white p-5">
+      <form onSubmit={handleSubmit} className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
         <FormField label="Full Name" htmlFor="fullName" error={errors.fullName}>
           <input id="fullName" className={inputClass(!!errors.fullName)} value={fullName} onChange={(e) => setFullName(e.target.value)} />
         </FormField>
@@ -103,7 +103,7 @@ export function ProfilePage() {
             <button
               type="button"
               onClick={() => setShowCurrentPassword((v) => !v)}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-900 transition-colors"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-900 dark:hover:text-ink-50 transition-colors"
               aria-label={showCurrentPassword ? 'Hide password' : 'Show password'}
             >
               {showCurrentPassword ? (
@@ -133,7 +133,7 @@ export function ProfilePage() {
             <button
               type="button"
               onClick={() => setShowNewPassword((v) => !v)}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-900 transition-colors"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-900 dark:hover:text-ink-50 transition-colors"
               aria-label={showNewPassword ? 'Hide password' : 'Show password'}
             >
               {showNewPassword ? (
@@ -151,7 +151,7 @@ export function ProfilePage() {
             </button>
           </div>
         </FormField>
-        <button type="submit" disabled={submitting} className="rounded-md bg-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 disabled:opacity-60 focus-ring">
+        <button type="submit" disabled={submitting} className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-300 disabled:opacity-60 focus-ring">
           {submitting ? 'Saving…' : 'Save Changes'}
         </button>
       </form>

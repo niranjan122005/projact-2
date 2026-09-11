@@ -69,15 +69,15 @@ export function CategoryManagementPage() {
     <div className="space-y-4 max-w-3xl">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-lg font-semibold text-ink-900">Category Management</h1>
+          <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50">Category Management</h1>
           <p className="text-sm text-ink-400">{categories.length} categories</p>
         </div>
-        <button onClick={openAdd} className="rounded-md bg-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 focus-ring">
+        <button onClick={openAdd} className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 dark:hover:bg-ink-300 focus-ring">
           + Add Category
         </button>
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white divide-y divide-ink-100">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 divide-y divide-ink-100 dark:divide-ink-800">
         {categories.length === 0 ? (
           <EmptyState title="No categories yet" description="Add a category to start organizing tickets." />
         ) : (
@@ -85,13 +85,13 @@ export function CategoryManagementPage() {
             <div key={c.id} className="flex items-center justify-between gap-4 px-4 py-3">
               <div className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <p className="font-medium text-ink-800">{c.name}</p>
+                  <p className="font-medium text-ink-800 dark:text-ink-100">{c.name}</p>
                   <UserStatusBadge status={c.status} />
                 </div>
                 <p className="text-sm text-ink-400 truncate">{c.description}</p>
               </div>
               <div className="flex gap-3 text-xs font-medium shrink-0">
-                <button onClick={() => openEdit(c)} className="text-ink-600 hover:text-ink-900">
+                <button onClick={() => openEdit(c)} className="text-ink-600 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-50">
                   Edit
                 </button>
                 <button onClick={() => handleToggle(c)} className="text-signal-amber hover:text-signal-amber/80">

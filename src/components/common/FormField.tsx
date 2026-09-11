@@ -15,7 +15,7 @@ export function FormField({
 }) {
   return (
     <div className="mb-4">
-      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-ink-700">
+      <label htmlFor={htmlFor} className="mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300">
         {label}
       </label>
       {children}
@@ -26,6 +26,6 @@ export function FormField({
 }
 
 export const inputClass = (hasError?: boolean) =>
-  `w-full rounded-md border px-3 py-2 text-sm text-ink-900 placeholder:text-ink-300 focus-ring ${
-    hasError ? 'border-signal-rust' : 'border-ink-200'
+  `w-full rounded-md border bg-white dark:bg-ink-900 px-3 py-2 text-sm text-ink-900 dark:text-ink-50 placeholder:text-ink-300 dark:placeholder:text-ink-600 focus-ring ${
+    hasError ? 'border-signal-rust' : 'border-ink-200 dark:border-ink-700'
   }`

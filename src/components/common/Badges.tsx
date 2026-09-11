@@ -3,12 +3,12 @@ import type { Role, UserStatus } from '../../types/user'
 import type { CategoryStatus } from '../../types/category'
 
 const statusStyles: Record<TicketStatus, string> = {
-  Open: 'bg-ink-100 text-ink-700 border-ink-200',
+  Open: 'bg-ink-100 dark:bg-ink-800 text-ink-700 dark:text-ink-300 border-ink-200 dark:border-ink-700',
   Assigned: 'bg-signal-indigo/10 text-signal-indigo border-signal-indigo/30',
   'In Progress': 'bg-signal-amber/10 text-signal-amber border-signal-amber/30',
-  Pending: 'bg-ink-200/60 text-ink-700 border-ink-300',
+  Pending: 'bg-ink-200/60 dark:bg-ink-700/60 text-ink-700 dark:text-ink-300 border-ink-300 dark:border-ink-600',
   Resolved: 'bg-signal-teal/10 text-signal-teal border-signal-teal/30',
-  Closed: 'bg-ink-800 text-white border-ink-800',
+  Closed: 'bg-ink-800 dark:bg-ink-200 dark:text-ink-900 text-white border-ink-800 dark:border-ink-200',
   Cancelled: 'bg-signal-rust/10 text-signal-rust border-signal-rust/30',
 }
 
@@ -21,7 +21,7 @@ export function StatusBadge({ status }: { status: TicketStatus }) {
 }
 
 const priorityStyles: Record<TicketPriority, string> = {
-  Low: 'bg-ink-100 text-ink-600 border-ink-200',
+  Low: 'bg-ink-100 dark:bg-ink-800 text-ink-600 dark:text-ink-400 border-ink-200 dark:border-ink-700',
   Medium: 'bg-signal-indigo/10 text-signal-indigo border-signal-indigo/30',
   High: 'bg-signal-amber/10 text-signal-amber border-signal-amber/30',
   Critical: 'bg-signal-rust/10 text-signal-rust border-signal-rust/40',
@@ -37,9 +37,9 @@ export function PriorityBadge({ priority }: { priority: TicketPriority }) {
 }
 
 const roleStyles: Record<Role, string> = {
-  Admin: 'bg-ink-900 text-white',
+  Admin: 'bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white',
   'Support Agent': 'bg-signal-indigo/15 text-signal-indigo',
-  Employee: 'bg-ink-100 text-ink-700',
+  Employee: 'bg-ink-100 dark:bg-ink-800 text-ink-700 dark:text-ink-300',
 }
 
 export function RoleBadge({ role }: { role: Role }) {
@@ -50,10 +50,10 @@ export function UserStatusBadge({ status }: { status: UserStatus | CategoryStatu
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ${
-        status === 'Active' ? 'bg-signal-teal/10 text-signal-teal' : 'bg-ink-100 text-ink-500'
+        status === 'Active' ? 'bg-signal-teal/10 text-signal-teal' : 'bg-ink-100 dark:bg-ink-800 text-ink-500 dark:text-ink-400'
       }`}
     >
-      <span className={`h-1.5 w-1.5 rounded-full ${status === 'Active' ? 'bg-signal-teal' : 'bg-ink-400'}`} />
+      <span className={`h-1.5 w-1.5 rounded-full ${status === 'Active' ? 'bg-signal-teal' : 'bg-ink-400 dark:bg-ink-500'}`} />
       {status}
     </span>
   )

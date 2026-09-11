@@ -51,10 +51,10 @@ export function CategoryFormModal({
           <textarea id="description" rows={3} className={inputClass(!!errors.description)} value={values.description} onChange={(e) => setValues((p) => ({ ...p, description: e.target.value }))} />
         </FormField>
         <div className="mt-4 flex justify-end gap-2">
-          <button type="button" onClick={onClose} className="rounded-md border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring">
+          <button type="button" onClick={onClose} className="rounded-md border border-ink-200 dark:border-ink-700 px-4 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring">
             Cancel
           </button>
-          <button type="submit" disabled={submitting} className="rounded-md bg-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 disabled:opacity-60 focus-ring">
+          <button type="submit" disabled={submitting} className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-300 disabled:opacity-60 focus-ring">
             {submitting ? 'Saving…' : initial ? 'Save Changes' : 'Add Category'}
           </button>
         </div>

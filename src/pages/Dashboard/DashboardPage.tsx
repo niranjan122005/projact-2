@@ -62,7 +62,7 @@ export function DashboardPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-lg font-semibold text-ink-900">
+          <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50">
             {user.role === 'Employee' ? 'My Dashboard' : `${user.role} Dashboard`}
           </h1>
           <p className="text-sm text-ink-400">Here's what's happening across your tickets.</p>
@@ -70,7 +70,7 @@ export function DashboardPage() {
         {(user.role === 'Employee' || user.role === 'Admin') && (
           <Link
             to="/tickets/new"
-            className="rounded-md bg-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 focus-ring"
+            className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 dark:hover:bg-ink-300 focus-ring"
           >
             + Create Ticket
           </Link>
@@ -83,22 +83,22 @@ export function DashboardPage() {
         ))}
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white">
-        <div className="flex items-center justify-between px-4 py-3 border-b border-ink-100">
-          <h2 className="text-sm font-semibold text-ink-800">Recently updated</h2>
-          <Link to="/tickets" className="text-xs font-medium text-ink-500 hover:text-ink-900">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-ink-100 dark:border-ink-800">
+          <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100">Recently updated</h2>
+          <Link to="/tickets" className="text-xs font-medium text-ink-500 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-50">
             View all →
           </Link>
         </div>
         {recent.length === 0 ? (
           <EmptyState title="No tickets yet" description="Tickets will show up here once they're created." />
         ) : (
-          <ul className="divide-y divide-ink-100">
+          <ul className="divide-y divide-ink-100 dark:divide-ink-800">
             {recent.map((t) => (
               <li key={t.id}>
-                <Link to={`/tickets/${t.id}`} className="flex items-center justify-between gap-4 px-4 py-3 hover:bg-ink-50">
+                <Link to={`/tickets/${t.id}`} className="flex items-center justify-between gap-4 px-4 py-3 hover:bg-ink-50 dark:hover:bg-ink-800">
                   <div className="min-w-0">
-                    <p className="text-sm font-medium text-ink-800 truncate">
+                    <p className="text-sm font-medium text-ink-800 dark:text-ink-100 truncate">
                       <span className="font-mono text-ink-400 mr-2">{t.ticketNumber}</span>
                       {t.subject}
                     </p>

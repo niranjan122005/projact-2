@@ -27,17 +27,17 @@ export function Modal({ open, onClose, title, children, size = 'md' }: ModalProp
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-ink-950/50 p-4 pt-12 sm:pt-20" onMouseDown={onClose}>
       <div
-        className={`w-full ${sizeClass[size]} rounded-lg bg-white shadow-xl border border-ink-100`}
+        className={`w-full ${sizeClass[size]} rounded-lg bg-white dark:bg-ink-900 shadow-xl border border-ink-100 dark:border-ink-800`}
         onMouseDown={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label={title}
       >
-        <div className="flex items-center justify-between border-b border-ink-100 px-5 py-4">
-          <h2 className="text-base font-semibold text-ink-900">{title}</h2>
+        <div className="flex items-center justify-between border-b border-ink-100 dark:border-ink-800 px-5 py-4">
+          <h2 className="text-base font-semibold text-ink-900 dark:text-ink-50">{title}</h2>
           <button
             onClick={onClose}
-            className="text-ink-400 hover:text-ink-700 rounded-full h-7 w-7 flex items-center justify-center hover:bg-ink-50 focus-ring"
+            className="text-ink-400 hover:text-ink-700 dark:hover:text-ink-200 rounded-full h-7 w-7 flex items-center justify-center hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring"
             aria-label="Close dialog"
           >
             ×
@@ -68,11 +68,11 @@ export function ConfirmModal({
 }) {
   return (
     <Modal open={open} onClose={onClose} title={title} size="sm">
-      <p className="text-sm text-ink-600">{message}</p>
+      <p className="text-sm text-ink-600 dark:text-ink-400">{message}</p>
       <div className="mt-5 flex justify-end gap-2">
         <button
           onClick={onClose}
-          className="rounded-md border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring"
+          className="rounded-md border border-ink-200 dark:border-ink-700 px-4 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring"
         >
           Cancel
         </button>
@@ -82,7 +82,7 @@ export function ConfirmModal({
             onClose()
           }}
           className={`rounded-md px-4 py-2 text-sm font-medium text-white focus-ring ${
-            danger ? 'bg-signal-rust hover:bg-signal-rust/90' : 'bg-ink-900 hover:bg-ink-800'
+            danger ? 'bg-signal-rust hover:bg-signal-rust/90' : 'bg-ink-900 dark:bg-ink-100 dark:text-ink-900 hover:bg-ink-800 dark:hover:bg-ink-300'
           }`}
         >
           {confirmLabel}

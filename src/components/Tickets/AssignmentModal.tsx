@@ -53,30 +53,30 @@ export function AssignmentModal({
   return (
     <Modal open={open} onClose={onClose} title={ticket.assignedAgentId ? 'Reassign Ticket' : 'Assign Ticket'} size="sm">
       <div className="space-y-3 text-sm">
-        <div className="flex justify-between text-ink-500">
+        <div className="flex justify-between text-ink-500 dark:text-ink-400">
           <span>Ticket</span>
-          <span className="font-medium text-ink-800">{ticket.ticketNumber}</span>
+          <span className="font-medium text-ink-800 dark:text-ink-100">{ticket.ticketNumber}</span>
         </div>
-        <div className="flex justify-between text-ink-500">
+        <div className="flex justify-between text-ink-500 dark:text-ink-400">
           <span>Current agent</span>
-          <span className="font-medium text-ink-800">{ticket.assignedAgentName || 'Unassigned'}</span>
+          <span className="font-medium text-ink-800 dark:text-ink-100">{ticket.assignedAgentName || 'Unassigned'}</span>
         </div>
         {lastAssignmentDate && (
-          <div className="flex justify-between text-ink-500">
+          <div className="flex justify-between text-ink-500 dark:text-ink-400">
             <span>Assignment date</span>
-            <span className="font-medium text-ink-800">{formatDateTime(lastAssignmentDate)}</span>
+            <span className="font-medium text-ink-800 dark:text-ink-100">{formatDateTime(lastAssignmentDate)}</span>
           </div>
         )}
 
         <div>
-          <label htmlFor="agent" className="mb-1.5 block text-sm font-medium text-ink-700">
+          <label htmlFor="agent" className="mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300">
             Available support agents
           </label>
           <select
             id="agent"
             value={selected}
             onChange={(e) => setSelected(e.target.value)}
-            className="w-full rounded-md border border-ink-200 px-3 py-2 text-sm focus-ring"
+            className="w-full rounded-md border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 px-3 py-2 text-sm focus-ring"
           >
             <option value="">Select an agent</option>
             {agents.map((a) => (
@@ -101,13 +101,13 @@ export function AssignmentModal({
           <span />
         )}
         <div className="flex gap-2">
-          <button onClick={onClose} className="rounded-md border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring">
+          <button onClick={onClose} className="rounded-md border border-ink-200 dark:border-ink-700 px-4 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring">
             Cancel
           </button>
           <button
             onClick={handleAssign}
             disabled={submitting || !selected}
-            className="rounded-md bg-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 disabled:opacity-50 focus-ring"
+            className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-300 disabled:opacity-50 focus-ring"
           >
             {ticket.assignedAgentId ? 'Reassign' : 'Assign'}
           </button>

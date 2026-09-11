@@ -33,14 +33,14 @@ export function CommentSection({
       ) : (
         <ul className="space-y-4 mb-4">
           {comments.map((c) => (
-            <li key={c.id} className="rounded-md border border-ink-100 p-3">
+            <li key={c.id} className="rounded-md border border-ink-100 dark:border-ink-800 p-3">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm font-medium text-ink-800">{c.userName}</span>
+                <span className="text-sm font-medium text-ink-800 dark:text-ink-100">{c.userName}</span>
                 <span className="text-xs text-ink-400">
                   {formatDate(c.createdDate)} · {c.createdTime}
                 </span>
               </div>
-              <p className="text-sm text-ink-600 whitespace-pre-wrap">{c.comment}</p>
+              <p className="text-sm text-ink-600 dark:text-ink-400 whitespace-pre-wrap">{c.comment}</p>
             </li>
           ))}
         </ul>
@@ -52,12 +52,12 @@ export function CommentSection({
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Add a comment…"
-            className="flex-1 rounded-md border border-ink-200 px-3 py-2 text-sm placeholder:text-ink-300 focus-ring"
+            className="flex-1 rounded-md border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 px-3 py-2 text-sm placeholder:text-ink-300 dark:placeholder:text-ink-600 focus-ring"
           />
           <button
             type="submit"
             disabled={submitting || !text.trim()}
-            className="rounded-md bg-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 disabled:opacity-50 focus-ring"
+            className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-300 disabled:opacity-50 focus-ring"
           >
             Post
           </button>

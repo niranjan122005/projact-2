@@ -86,23 +86,23 @@ export function UserManagementPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-lg font-semibold text-ink-900">User Management</h1>
+          <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50">User Management</h1>
           <p className="text-sm text-ink-400">{filtered.length} user{filtered.length === 1 ? '' : 's'}</p>
         </div>
-        <button onClick={openAddForm} className="rounded-md bg-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 focus-ring">
+        <button onClick={openAddForm} className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 dark:hover:bg-ink-300 focus-ring">
           + Add User
         </button>
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white p-4 flex flex-wrap gap-2">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-4 flex flex-wrap gap-2">
         <input
           type="search"
           placeholder="Search by name or email…"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full sm:w-72 rounded-md border border-ink-200 px-3 py-2 text-sm placeholder:text-ink-300 focus-ring"
+          className="w-full sm:w-72 rounded-md border border-ink-200 dark:border-ink-700 px-3 py-2 text-sm placeholder:text-ink-300 dark:placeholder:text-ink-600 focus-ring"
         />
-        <select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} className="rounded-md border border-ink-200 px-2.5 py-2 text-sm bg-white focus-ring">
+        <select value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)} className="rounded-md border border-ink-200 dark:border-ink-700 px-2.5 py-2 text-sm bg-white dark:bg-ink-900 focus-ring">
           <option value="">All roles</option>
           <option value="Admin">Admin</option>
           <option value="Support Agent">Support Agent</option>
@@ -110,7 +110,7 @@ export function UserManagementPage() {
         </select>
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900">
         <UserTable users={pageItems} onEdit={openEditForm} onDelete={setDeleteTarget} onToggleStatus={handleToggleStatus} />
         <Pagination page={page} totalPages={totalPages} onChange={setPage} />
       </div>

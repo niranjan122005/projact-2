@@ -147,6 +147,13 @@ export function TicketDetailsPage() {
     try {
       const updated = await ticketService.resolve(ticket, values, user.fullName)
       setTicket(updated)
+      const comment = await commentService.create({
+        ticketId: ticket.id,
+        userId: user.id,
+        userName: user.fullName,
+        comment: `Resolved the task: ${values.resolution}`,
+      })
+      setComments((prev) => [...prev, comment])
       showToast('Ticket resolved.')
     } catch (e) {
       showToast(getErrorMessage(e), 'error')
@@ -180,10 +187,10 @@ export function TicketDetailsPage() {
     <div className="max-w-5xl space-y-6">
       <div className="flex items-start justify-between flex-wrap gap-3">
         <div>
-          <Link to="/tickets" className="text-xs font-medium text-ink-400 hover:text-ink-700">
+          <Link to="/tickets" className="text-xs font-medium text-ink-400 hover:text-ink-700 dark:hover:text-ink-200">
             ← Back to tickets
           </Link>
-          <h1 className="text-lg font-semibold text-ink-900 mt-1">
+          <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50 mt-1">
             <span className="font-mono text-ink-400 mr-2">{ticket.ticketNumber}</span>
             {ticket.subject}
           </h1>
@@ -195,12 +202,12 @@ export function TicketDetailsPage() {
         </div>
         <div className="flex flex-wrap gap-2">
           {canEditTicket(user.role, user.id, ticket) && (
-            <button onClick={() => setEditOpen(true)} className="rounded-md border border-ink-200 px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring">
+            <button onClick={() => setEditOpen(true)} className="rounded-md border border-ink-200 dark:border-ink-700 px-3 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring">
               Edit
             </button>
           )}
           {canAssignTickets(user.role) && (
-            <button onClick={() => setAssignOpen(true)} className="rounded-md border border-ink-200 px-3 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring">
+            <button onClick={() => setAssignOpen(true)} className="rounded-md border border-ink-200 dark:border-ink-700 px-3 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring">
               {ticket.assignedAgentId ? 'Reassign' : 'Assign'}
             </button>
           )}
@@ -214,22 +221,22 @@ export function TicketDetailsPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <section className="rounded-lg border border-ink-100 bg-white p-5">
-            <h2 className="text-sm font-semibold text-ink-800 mb-3">Description</h2>
-            <p className="text-sm text-ink-600 whitespace-pre-wrap">{ticket.description}</p>
+          <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+            <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Description</h2>
+            <p className="text-sm text-ink-600 dark:text-ink-400 whitespace-pre-wrap">{ticket.description}</p>
           </section>
 
           {allowedStatuses.length > 0 && (
-            <section className="rounded-lg border border-ink-100 bg-white p-5">
-              <h2 className="text-sm font-semibold text-ink-800 mb-3">Update status</h2>
+            <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+              <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Update status</h2>
               <StatusActions options={allowedStatuses} onSelect={handleStatusChange} />
             </section>
           )}
 
           {(ticket.resolution || canAddResolution(user.role, user.id, ticket)) && (
-            <section className="rounded-lg border border-ink-100 bg-white p-5">
+            <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
               <div className="flex items-center justify-between mb-3">
-                <h2 className="text-sm font-semibold text-ink-800">Resolution</h2>
+                <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100">Resolution</h2>
                 {canAddResolution(user.role, user.id, ticket) && !ticket.resolution && ticket.status !== 'Closed' && (
                   <button onClick={() => setResolveOpen(true)} className="text-xs font-medium text-signal-teal hover:underline">
                     Add resolution
@@ -238,8 +245,8 @@ export function TicketDetailsPage() {
               </div>
               {ticket.resolution ? (
                 <div className="space-y-2 text-sm">
-                  <p className="font-medium text-ink-800">{ticket.resolution}</p>
-                  <p className="text-ink-600 whitespace-pre-wrap">{ticket.resolutionNotes}</p>
+                  <p className="font-medium text-ink-800 dark:text-ink-100">{ticket.resolution}</p>
+                  <p className="text-ink-600 dark:text-ink-400 whitespace-pre-wrap">{ticket.resolutionNotes}</p>
                   <p className="text-xs text-ink-400">Resolved {formatDateTime(ticket.resolutionDate)}</p>
                 </div>
               ) : (
@@ -248,20 +255,20 @@ export function TicketDetailsPage() {
             </section>
           )}
 
-          <section className="rounded-lg border border-ink-100 bg-white p-5">
-            <h2 className="text-sm font-semibold text-ink-800 mb-3">Comments</h2>
+          <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+            <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Comments</h2>
             <CommentSection comments={comments} canComment={canAddComment(user.role, user.id, ticket)} onAdd={handleAddComment} />
           </section>
 
-          <section className="rounded-lg border border-ink-100 bg-white p-5">
-            <h2 className="text-sm font-semibold text-ink-800 mb-3">Activity history</h2>
+          <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+            <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Activity history</h2>
             <ActivityTimeline activity={ticket.activity} />
           </section>
         </div>
 
         <div className="space-y-6">
-          <section className="rounded-lg border border-ink-100 bg-white p-5 text-sm">
-            <h2 className="text-sm font-semibold text-ink-800 mb-3">Ticket details</h2>
+          <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5 text-sm">
+            <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Ticket details</h2>
             <dl className="space-y-3">
               <Row label="Created by" value={ticket.createdByName} />
               <Row label="Assigned agent" value={ticket.assignedAgentName || 'Unassigned'} />
@@ -273,12 +280,12 @@ export function TicketDetailsPage() {
           </section>
 
           {canUpdatePriority(user.role, user.id, ticket) && (
-            <section className="rounded-lg border border-ink-100 bg-white p-5">
-              <h2 className="text-sm font-semibold text-ink-800 mb-3">Priority</h2>
+            <section className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
+              <h2 className="text-sm font-semibold text-ink-800 dark:text-ink-100 mb-3">Priority</h2>
               <select
                 value={ticket.priority}
                 onChange={(e) => handlePriorityChange(e.target.value as TicketPriority)}
-                className="w-full rounded-md border border-ink-200 px-3 py-2 text-sm focus-ring"
+                className="w-full rounded-md border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 px-3 py-2 text-sm focus-ring"
               >
                 {(['Low', 'Medium', 'High', 'Critical'] as TicketPriority[]).map((p) => (
                   <option key={p} value={p}>
@@ -314,7 +321,7 @@ function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-3">
       <dt className="text-ink-400">{label}</dt>
-      <dd className="font-medium text-ink-800 text-right">{value}</dd>
+      <dd className="font-medium text-ink-800 dark:text-ink-100 text-right">{value}</dd>
     </div>
   )
 }

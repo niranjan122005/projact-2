@@ -4,10 +4,10 @@
 @tailwind utilities;
 
 html, body, #root { height: 100%; }
-body { @apply bg-ink-50 text-ink-900 antialiased; }
+body { @apply bg-ink-50 dark:bg-ink-950 text-ink-900 dark:text-ink-50 antialiased transition-colors; }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-thumb { @apply bg-ink-300 rounded-full; }
+::-webkit-scrollbar-thumb { @apply bg-ink-300 dark:bg-ink-700 rounded-full; }
 ::-webkit-scrollbar-track { background: transparent; }
 
-.focus-ring { @apply outline-none ring-2 ring-offset-2 ring-ink-500; }
+.focus-ring { @apply outline-none ring-2 ring-offset-2 ring-ink-500 ring-offset-white dark:ring-offset-ink-950 dark:ring-ink-400; }

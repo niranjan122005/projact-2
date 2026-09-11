@@ -227,10 +227,10 @@
       "assignedAgentName": null,
       "category": "Access Request",
       "priority": "Low",
-      "status": "Open",
+      "status": "In Progress",
       "preferredContact": "Email",
       "createdDate": "2026-09-03T14:00:00.000Z",
-      "updatedDate": "2026-09-03T14:00:00.000Z",
+      "updatedDate": "2026-09-11T07:33:38.899Z",
       "dueDate": "2026-09-10T14:00:00.000Z",
       "resolution": null,
       "resolutionNotes": null,
@@ -241,6 +241,12 @@
           "timestamp": "2026-09-03T14:00:00.000Z",
           "actorName": "Jordan Blake",
           "action": "Ticket created"
+        },
+        {
+          "id": "92356f41-9d0a-49e6-803e-4527754ab8dc",
+          "timestamp": "2026-09-11T07:33:38.898Z",
+          "actorName": "Jordan Blake",
+          "action": "Status changed to In Progress"
         }
       ]
     },
@@ -455,6 +461,34 @@
         }
       ],
       "id": "4bnfThF"
+    },
+    {
+      "ticketNumber": "TCK-1009",
+      "subject": "service",
+      "description": "serive related issue",
+      "createdById": "u1",
+      "createdByName": "Alicia Grant",
+      "assignedAgentId": null,
+      "assignedAgentName": null,
+      "category": "Hardware",
+      "priority": "Medium",
+      "status": "Open",
+      "preferredContact": "Email",
+      "createdDate": "2026-09-10T10:07:51.861Z",
+      "updatedDate": "2026-09-10T10:07:51.861Z",
+      "dueDate": "2026-09-15T10:07:51.861Z",
+      "resolution": null,
+      "resolutionNotes": null,
+      "resolutionDate": null,
+      "activity": [
+        {
+          "id": "d639b4f5-5b7f-4188-b8ca-cc864bc76a6b",
+          "timestamp": "2026-09-10T10:07:51.861Z",
+          "actorName": "Alicia Grant",
+          "action": "Ticket created"
+        }
+      ],
+      "id": "d0qM_UW"
     }
   ],
   "comments": [

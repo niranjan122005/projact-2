@@ -38,21 +38,21 @@ export function TicketsListPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-lg font-semibold text-ink-900">{user.role === 'Admin' ? 'All Tickets' : 'My Tickets'}</h1>
+          <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50">{user.role === 'Admin' ? 'All Tickets' : 'My Tickets'}</h1>
           <p className="text-sm text-ink-400">{filtered.length} ticket{filtered.length === 1 ? '' : 's'}</p>
         </div>
         {canCreateTicket(user.role) && (
-          <Link to="/tickets/new" className="rounded-md bg-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 focus-ring">
+          <Link to="/tickets/new" className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white text-sm font-medium px-4 py-2 hover:bg-ink-800 dark:hover:bg-ink-300 focus-ring">
             + Create Ticket
           </Link>
         )}
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white p-4">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-4">
         <TicketFilters value={filters} onChange={setFilters} categories={categories} agents={agents} showAgentFilter={user.role === 'Admin'} />
       </div>
 
-      <div className="rounded-lg border border-ink-100 bg-white">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900">
         <TicketTable tickets={pageItems} showRequester={user.role !== 'Employee'} />
         <Pagination page={page} totalPages={totalPages} onChange={setPage} />
       </div>

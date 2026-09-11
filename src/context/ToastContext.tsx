@@ -50,23 +50,23 @@ function ToastViewport({ toasts, onDismiss }: { toasts: Toast[]; onDismiss: (id:
           role="status"
           className={`rounded-md border px-4 py-3 text-sm shadow-lg flex items-start justify-between gap-3 animate-[fadeIn_.15s_ease-out] ${
             t.kind === 'success'
-              ? 'bg-white border-signal-teal/30 text-ink-800'
+              ? 'bg-white dark:bg-ink-900 border-signal-teal/30 text-ink-800 dark:text-ink-100'
               : t.kind === 'error'
-                ? 'bg-white border-signal-rust/40 text-ink-800'
-                : 'bg-white border-ink-200 text-ink-800'
+                ? 'bg-white dark:bg-ink-900 border-signal-rust/40 text-ink-800 dark:text-ink-100'
+                : 'bg-white dark:bg-ink-900 border-ink-200 dark:border-ink-700 text-ink-800 dark:text-ink-100'
           }`}
         >
           <div className="flex items-start gap-2">
             <span
               className={`mt-1 h-2 w-2 shrink-0 rounded-full ${
-                t.kind === 'success' ? 'bg-signal-teal' : t.kind === 'error' ? 'bg-signal-rust' : 'bg-ink-400'
+                t.kind === 'success' ? 'bg-signal-teal' : t.kind === 'error' ? 'bg-signal-rust' : 'bg-ink-400 dark:bg-ink-500'
               }`}
             />
             <span>{t.message}</span>
           </div>
           <button
             onClick={() => onDismiss(t.id)}
-            className="text-ink-400 hover:text-ink-700 leading-none text-base"
+            className="text-ink-400 hover:text-ink-700 dark:hover:text-ink-200 leading-none text-base"
             aria-label="Dismiss notification"
           >
             ×

@@ -111,7 +111,7 @@ export function TicketForm({
             <label
               key={m}
               className={`flex-1 cursor-pointer rounded-md border px-3 py-2 text-center text-sm font-medium ${
-                values.preferredContact === m ? 'border-ink-900 bg-ink-900 text-white' : 'border-ink-200 text-ink-600 hover:bg-ink-50'
+                values.preferredContact === m ? 'border-ink-900 dark:border-ink-100 bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white' : 'border-ink-200 dark:border-ink-700 text-ink-600 dark:text-ink-400 hover:bg-ink-50 dark:hover:bg-ink-800'
               }`}
             >
               <input type="radio" name="preferredContact" className="sr-only" checked={values.preferredContact === m} onChange={() => set('preferredContact', m)} />
@@ -123,11 +123,11 @@ export function TicketForm({
 
       <div className="mt-6 flex justify-end gap-2">
         {onCancel && (
-          <button type="button" onClick={onCancel} className="rounded-md border border-ink-200 px-4 py-2 text-sm font-medium text-ink-700 hover:bg-ink-50 focus-ring">
+          <button type="button" onClick={onCancel} className="rounded-md border border-ink-200 dark:border-ink-700 px-4 py-2 text-sm font-medium text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-800 focus-ring">
             Cancel
           </button>
         )}
-        <button type="submit" disabled={submitting} className="rounded-md bg-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 disabled:opacity-60 focus-ring">
+        <button type="submit" disabled={submitting} className="rounded-md bg-ink-900 dark:bg-ink-100 dark:text-ink-900 text-white px-4 py-2 text-sm font-medium hover:bg-ink-800 dark:hover:bg-ink-300 disabled:opacity-60 focus-ring">
           {submitting ? 'Saving…' : submitLabel}
         </button>
       </div>

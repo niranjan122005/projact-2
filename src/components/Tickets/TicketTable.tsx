@@ -13,7 +13,7 @@ export function TicketTable({ tickets, showRequester = true }: { tickets: Ticket
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-ink-100 text-left text-xs font-medium uppercase tracking-wide text-ink-400">
+          <tr className="border-b border-ink-100 dark:border-ink-800 text-left text-xs font-medium uppercase tracking-wide text-ink-400">
             <th className="px-4 py-3">Ticket</th>
             {showRequester && <th className="px-4 py-3 hidden md:table-cell">Requester</th>}
             <th className="px-4 py-3 hidden lg:table-cell">Agent</th>
@@ -23,18 +23,18 @@ export function TicketTable({ tickets, showRequester = true }: { tickets: Ticket
             <th className="px-4 py-3 hidden md:table-cell">Updated</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-ink-100">
+        <tbody className="divide-y divide-ink-100 dark:divide-ink-800">
           {tickets.map((t) => (
-            <tr key={t.id} className="hover:bg-ink-50">
+            <tr key={t.id} className="hover:bg-ink-50 dark:hover:bg-ink-800">
               <td className="px-4 py-3">
                 <Link to={`/tickets/${t.id}`} className="block max-w-xs">
                   <span className="font-mono text-xs text-ink-400">{t.ticketNumber}</span>
-                  <p className="font-medium text-ink-800 truncate">{t.subject}</p>
+                  <p className="font-medium text-ink-800 dark:text-ink-100 truncate">{t.subject}</p>
                 </Link>
               </td>
-              {showRequester && <td className="px-4 py-3 hidden md:table-cell text-ink-600">{t.createdByName}</td>}
-              <td className="px-4 py-3 hidden lg:table-cell text-ink-600">{t.assignedAgentName || '—'}</td>
-              <td className="px-4 py-3 hidden sm:table-cell text-ink-600">{t.category}</td>
+              {showRequester && <td className="px-4 py-3 hidden md:table-cell text-ink-600 dark:text-ink-400">{t.createdByName}</td>}
+              <td className="px-4 py-3 hidden lg:table-cell text-ink-600 dark:text-ink-400">{t.assignedAgentName || '—'}</td>
+              <td className="px-4 py-3 hidden sm:table-cell text-ink-600 dark:text-ink-400">{t.category}</td>
               <td className="px-4 py-3">
                 <PriorityBadge priority={t.priority} />
               </td>

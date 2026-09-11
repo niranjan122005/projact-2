@@ -22,7 +22,7 @@ export const defaultFilters: TicketFilterState = {
 }
 
 const selectClass =
-  'rounded-md border border-ink-200 px-2.5 py-2 text-sm text-ink-700 bg-white focus-ring'
+  'rounded-md border border-ink-200 dark:border-ink-700 px-2.5 py-2 text-sm text-ink-700 dark:text-ink-300 bg-white dark:bg-ink-900 focus-ring'
 
 export function TicketFilters({
   value,
@@ -48,7 +48,7 @@ export function TicketFilters({
         placeholder="Search by ID, subject, requester, agent…"
         value={value.search}
         onChange={(e) => set('search', e.target.value)}
-        className="w-full sm:w-72 rounded-md border border-ink-200 px-3 py-2 text-sm placeholder:text-ink-300 focus-ring"
+        className="w-full sm:w-72 rounded-md border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 px-3 py-2 text-sm placeholder:text-ink-300 dark:placeholder:text-ink-600 focus-ring"
       />
       <select className={selectClass} value={value.status} onChange={(e) => set('status', e.target.value)}>
         <option value="">All statuses</option>
@@ -91,7 +91,7 @@ export function TicketFilters({
           type="date"
           value={value.createdAfter}
           onChange={(e) => set('createdAfter', e.target.value)}
-          className="rounded-md border border-ink-200 px-2 py-1.5 text-sm text-ink-700 focus-ring"
+          className="rounded-md border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-900 px-2 py-1.5 text-sm text-ink-700 dark:text-ink-300 focus-ring"
         />
       </label>
       <select className={selectClass} value={value.sort} onChange={(e) => set('sort', e.target.value as TicketFilterState['sort'])}>

@@ -29,9 +29,9 @@ export function CreateTicketPage() {
 
   return (
     <div className="max-w-2xl">
-      <h1 className="text-lg font-semibold text-ink-900 mb-1">Create a support ticket</h1>
+      <h1 className="text-lg font-semibold text-ink-900 dark:text-ink-50 mb-1">Create a support ticket</h1>
       <p className="text-sm text-ink-400 mb-6">Tell us what's going on — we'll route it to the right team.</p>
-      <div className="rounded-lg border border-ink-100 bg-white p-5">
+      <div className="rounded-lg border border-ink-100 dark:border-ink-800 bg-white dark:bg-ink-900 p-5">
         <TicketForm categories={categories} submitLabel="Submit Ticket" onSubmit={handleSubmit} onCancel={() => navigate(-1)} />
       </div>
     </div>

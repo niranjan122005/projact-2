@@ -104,7 +104,8 @@ export function getAllowedNextStatuses(role: Role, userId: string, ticket: Ticke
   if (isEmployee(role)) {
     if (ticket.createdById !== userId) return []
     const options: TicketStatus[] = []
-    if (ticket.status === 'Open') options.push('Cancelled')
+    if (ticket.status === 'Open') options.push('In Progress', 'Cancelled')
+    if (ticket.status === 'In Progress' || ticket.status === 'Pending') options.push('Resolved')
     if (ticket.status === 'Resolved') options.push('Open') // Reopen
     return options
   }
